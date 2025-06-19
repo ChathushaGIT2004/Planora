@@ -1,0 +1,2086 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Planning App - Your Perfect Event Starts Here</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Modern Design System */
+        :root {
+            --primary: #FF69B4;
+            --primary-dark: #FF1493;
+            --secondary: #FFB6C1;
+            --accent: #FFC0CB;
+            --text: #4A4A4A;
+            --text-light: #888888;
+            --background: #FFF5F7;
+            --gradient-1: linear-gradient(135deg, #FF69B4 0%, #FFB6C1 100%);
+            --gradient-2: linear-gradient(135deg, #FFC0CB 0%, #FFB6C1 100%);
+            --shadow-soft: 0 4px 15px rgba(255, 105, 180, 0.1);
+            --shadow-strong: 0 8px 30px rgba(255, 105, 180, 0.15);
+        }
+
+        /* Enhanced Base Styles */
+        body {
+            font-family: 'Playfair Display', serif;
+            color: var(--text);
+            line-height: 1.8;
+            background-color: var(--background);
+        }
+
+        /* Enhanced Hero Section */
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            height: 100vh;
+            position: relative;
+        }
+
+        .hero-content {
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Enhanced Button Styles */
+        .btn-primary {
+            background: var(--gradient-1);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            transition: all 0.4s ease;
+            box-shadow: var(--shadow-soft);
+            border: none;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-strong);
+        }
+
+        .btn-secondary {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            padding: 1rem 2rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            transition: all 0.4s ease;
+            background: transparent;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .btn-secondary:hover {
+            background: var(--gradient-1);
+            color: white;
+            border-color: transparent;
+        }
+
+        /* Enhanced Card Styles */
+        .feature-card {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            transition: all 0.4s ease;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(255, 182, 193, 0.2);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-strong);
+            border-color: var(--secondary);
+        }
+
+        .feature-icon {
+            width: 5rem;
+            height: 5rem;
+            background: var(--gradient-1);
+            color: white;
+            border-radius: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1);
+        }
+
+        /* Enhanced Section Styles */
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -0.5rem;
+            left: 0;
+            width: 4rem;
+            height: 0.25rem;
+            background: var(--gradient-1);
+            border-radius: 9999px;
+        }
+
+        /* Modern About Section */
+        .about-section {
+            background: linear-gradient(135deg, #fff 0%, #FFF5F7 100%);
+            padding: 8rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-content {
+            max-width: 6xl;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text-content {
+            padding-right: 2rem;
+        }
+
+        .about-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .about-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .about-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .feature-icon-wrapper {
+            width: 3rem;
+            height: 3rem;
+            background: var(--gradient-1);
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .feature-content h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-content p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 2rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-strong);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 4rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 2rem;
+            background: white;
+            border-radius: 1.5rem;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-strong);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: var(--text-light);
+        }
+
+        @media (max-width: 1024px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .about-text-content {
+                padding-right: 0;
+            }
+
+            .about-image {
+                max-width: 600px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .about-features {
+                grid-template-columns: 1fr;
+            }
+
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Enhanced Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+
+        /* Enhanced Testimonial Cards */
+        .testimonial-card {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            transition: all 0.4s ease;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(255, 182, 193, 0.2);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-strong);
+            border-color: var(--secondary);
+        }
+
+        .testimonial-avatar {
+            width: 5rem;
+            height: 5rem;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary);
+            box-shadow: var(--shadow-soft);
+        }
+
+        /* Modern Portfolio Section */
+        .portfolio-section {
+            background: linear-gradient(to bottom, #fff, #FFF5F7);
+            padding: 8rem 0;
+            position: relative;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            position: relative;
+        }
+
+        .portfolio-card {
+            position: relative;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            cursor: pointer;
+        }
+
+        .portfolio-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to top,
+                rgba(255, 105, 180, 0.95),
+                rgba(255, 182, 193, 0.8)
+            );
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            transform: translateY(100%);
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .portfolio-card:hover .portfolio-overlay {
+            transform: translateY(0);
+        }
+
+        .portfolio-card:hover .portfolio-image {
+            transform: scale(1.1);
+        }
+
+        .portfolio-title {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.4s ease 0.1s;
+        }
+
+        .portfolio-services {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.4s ease 0.2s;
+        }
+
+        .portfolio-quote {
+            color: rgba(255, 255, 255, 0.8);
+            font-style: italic;
+            font-size: 0.95rem;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.4s ease 0.3s;
+        }
+
+        .portfolio-card:hover .portfolio-title,
+        .portfolio-card:hover .portfolio-services,
+        .portfolio-card:hover .portfolio-quote {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .portfolio-badge {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--primary);
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transform: translateY(-20px);
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        .portfolio-card:hover .portfolio-badge {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .portfolio-category {
+            position: absolute;
+            top: 1.5rem;
+            left: 1.5rem;
+            background: var(--primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transform: translateY(-20px);
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        .portfolio-card:hover .portfolio-category {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        @media (max-width: 1024px) {
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Enhanced Team Cards */
+        .team-card {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(255, 182, 193, 0.2);
+        }
+
+        .team-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-strong);
+            border-color: var(--secondary);
+        }
+
+        .team-avatar {
+            width: 10rem;
+            height: 10rem;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--primary);
+            box-shadow: var(--shadow-soft);
+            margin: 0 auto 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .team-card:hover .team-avatar {
+            transform: scale(1.05);
+            border-color: var(--secondary);
+        }
+
+        /* Enhanced Pricing Cards */
+        .pricing-card {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            transition: all 0.4s ease;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(255, 182, 193, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-strong);
+            border-color: var(--secondary);
+        }
+
+        .pricing-popular {
+            background: var(--gradient-1);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            box-shadow: var(--shadow-soft);
+        }
+
+        /* Enhanced FAQ Section */
+        .faq-item {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.4s ease;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(255, 182, 193, 0.2);
+        }
+
+        .faq-item:hover {
+            box-shadow: var(--shadow-strong);
+            border-color: var(--secondary);
+        }
+
+        .faq-question {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            color: var(--text);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.2rem;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            margin-top: 1rem;
+        }
+
+        /* Enhanced Contact Form */
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border: 2px solid rgba(255, 182, 193, 0.3);
+            border-radius: 1rem;
+            transition: all 0.3s ease;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(255, 105, 180, 0.1);
+        }
+
+        /* Enhanced Newsletter Section */
+        .newsletter-section {
+            background: linear-gradient(rgba(255, 105, 180, 0.9), rgba(255, 182, 193, 0.9)), url('https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 8rem 0;
+            position: relative;
+        }
+
+        .newsletter-form input {
+            width: 100%;
+            padding: 1.2rem 2rem;
+            border-radius: 9999px;
+            border: none;
+            font-size: 1.1rem;
+            font-family: 'Playfair Display', serif;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .newsletter-form input:focus {
+            outline: none;
+            box-shadow: var(--shadow-strong);
+        }
+
+        /* Enhanced Footer */
+        footer {
+            background: linear-gradient(to right, #2C3E50, #4A4A4A);
+            color: white;
+            padding: 6rem 0 3rem;
+        }
+
+        footer h3, footer h4 {
+            font-family: 'Playfair Display', serif;
+            color: white;
+        }
+
+        footer a {
+            transition: all 0.3s ease;
+        }
+
+        footer a:hover {
+            color: var(--secondary);
+            transform: translateX(5px);
+        }
+
+        /* Add Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+        /* Modern Testimonials Section */
+        .testimonials-section {
+            background: white;
+            padding: 8rem 0;
+            position: relative;
+        }
+
+        .testimonials-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: linear-gradient(to bottom, rgba(255, 182, 193, 0.05), transparent);
+            z-index: 0;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            position: relative;
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .testimonial-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 4px 4px 0 0;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .testimonial-card:hover::after {
+            opacity: 1;
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-avatar {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 1rem;
+            border: 2px solid transparent;
+            transition: all 0.4s ease;
+        }
+
+        .testimonial-card:hover .testimonial-avatar {
+            border-color: var(--primary);
+        }
+
+        .testimonial-info {
+            flex: 1;
+        }
+
+        .testimonial-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.25rem;
+        }
+
+        .testimonial-role {
+            font-size: 0.9rem;
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        .testimonial-quote {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            flex: 1;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .testimonial-quote::before {
+            content: '"';
+            position: absolute;
+            left: 0;
+            top: -0.5rem;
+            font-size: 2rem;
+            color: var(--primary);
+            opacity: 0.3;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .testimonial-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-rating {
+            display: flex;
+            gap: 0.25rem;
+        }
+
+        .testimonial-rating i {
+            color: #FFD700;
+            font-size: 1rem;
+        }
+
+        .testimonial-date {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 1024px) {
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Enhanced Video Demo Section */
+        .video-demo-section {
+            background: linear-gradient(135deg, #fff 0%, #FFF5F7 100%);
+            padding: 8rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-demo-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1519741497674-611481863552') center/cover;
+            opacity: 0.05;
+            z-index: 0;
+        }
+
+        .video-demo-content {
+            max-width: 6xl;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .video-demo-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .video-demo-title {
+            font-size: 3.2rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            position: relative;
+            display: inline-block;
+        }
+
+        .video-demo-title::after {
+            content: '';
+            position: absolute;
+            bottom: -0.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient-1);
+            border-radius: 2px;
+        }
+
+        .video-demo-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .video-wrapper {
+            position: relative;
+            border-radius: 2rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-strong);
+            margin: 0 auto;
+            max-width: 1000px;
+            background: #000;
+            aspect-ratio: 16/9;
+            transition: transform 0.3s ease;
+        }
+
+        .video-wrapper:hover {
+            transform: translateY(-5px);
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .video-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.4));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .video-wrapper:hover .video-overlay {
+            opacity: 1;
+        }
+
+        .play-button {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .play-button:hover {
+            transform: scale(1.1);
+        }
+
+        .video-highlights {
+            margin-top: 4rem;
+            text-align: center;
+            padding: 0 1rem;
+        }
+
+        .highlights-title {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .highlights-title::after {
+            content: '';
+            position: absolute;
+            bottom: -0.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--gradient-1);
+            border-radius: 2px;
+        }
+
+        .highlights-text {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 1024px) {
+            .video-demo-title {
+                font-size: 2.8rem;
+            }
+            
+            .highlights-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .video-demo-title {
+                font-size: 2.4rem;
+            }
+            
+            .video-demo-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .play-button {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+            
+            .highlights-title {
+                font-size: 1.6rem;
+            }
+            
+            .highlights-text {
+                font-size: 1rem;
+            }
+        }
+
+        /* How It Works Section */
+        .how-it-works-section {
+            background: linear-gradient(135deg, #FFF5F7 0%, #fff 100%);
+            padding: 8rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .how-it-works-content {
+            max-width: 6xl;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .how-it-works-header {
+            text-align: center;
+            margin-bottom: 6rem;
+        }
+
+        .how-it-works-title {
+            font-size: 3.2rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .how-it-works-title::after {
+            content: '';
+            position: absolute;
+            bottom: -0.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient-1);
+            border-radius: 2px;
+        }
+
+        .how-it-works-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: var(--gradient-1);
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 4rem;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2.5rem;
+            height: 2.5rem;
+            background: var(--gradient-1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 1.2rem;
+            box-shadow: var(--shadow-soft);
+            z-index: 2;
+        }
+
+        .timeline-content {
+            width: 45%;
+            background: white;
+            border-radius: 1.5rem;
+            padding: 2rem;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(255, 182, 193, 0.2);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-strong);
+            border-color: var(--secondary);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-right: 55%;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 55%;
+        }
+
+        .timeline-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .timeline-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 1rem;
+        }
+
+        .timeline-description {
+            font-size: 1rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 2rem;
+            }
+
+            .timeline-dot {
+                left: 2rem;
+            }
+
+            .timeline-content {
+                width: calc(100% - 4rem);
+                margin-left: 4rem !important;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content {
+                margin-right: 0;
+            }
+
+            .how-it-works-title {
+                font-size: 2.4rem;
+            }
+
+            .how-it-works-subtitle {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body class="font-sans">
+    <!-- Hero Section -->
+    <section class="hero-section relative flex items-center justify-center text-white">
+        <div class="text-center px-4">
+            <h1 class="text-5xl md:text-6xl font-bold mb-6">All-in-One Event Planning Starts Here</h1>
+            <p class="text-xl md:text-2xl mb-8">From dresses to venues to custom gifts – plan your big day effortlessly.</p>
+            <div class="space-x-4">
+                <button class="bg-white text-black px-8 py-3 rounded-full font-semibold hover:bg-opacity-90 transition">
+                    Download App
+                </button>
+                <button class="border-2 border-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-black transition">
+                    See How It Works
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="about-content">
+            <div class="about-grid">
+                <div class="about-text-content">
+                    <h2 class="about-title">Your Perfect Event, Simplified</h2>
+                    <p class="about-description">
+                        We understand that planning your special day should be as magical as the event itself. 
+                        Our app combines cutting-edge technology with personalized service to create an 
+                        effortless planning experience. From the initial consultation to the final celebration, 
+                        we're here to make your dreams a reality.
+                    </p>
+                    <p class="about-description">
+                        With our comprehensive suite of tools and dedicated support team, you'll have everything 
+                        you need to plan your perfect event. Whether it's a wedding, corporate gathering, or 
+                        special celebration, we've got you covered.
+                    </p>
+                    
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <div class="feature-icon-wrapper">
+                                <i class="fas fa-calendar-check"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h3>Smart Planning</h3>
+                                <p>Intuitive timeline management and task tracking for seamless organization</p>
+                            </div>
+                        </div>
+                        <div class="about-feature">
+                            <div class="feature-icon-wrapper">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h3>Guest Management</h3>
+                                <p>Efficiently manage guest lists, RSVPs, and seating arrangements</p>
+                            </div>
+                        </div>
+                        <div class="about-feature">
+                            <div class="feature-icon-wrapper">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h3>Venue Booking</h3>
+                                <p>Find and book the perfect venue with our extensive network</p>
+                            </div>
+                        </div>
+                        <div class="about-feature">
+                            <div class="feature-icon-wrapper">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h3>Real-time Support</h3>
+                                <p>24/7 access to your personal event planning assistant</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1519741497674-611481863552" alt="Event Planning">
+                </div>
+            </div>
+
+            <div class="about-stats">
+                <div class="stat-item">
+                    <div class="stat-number">5000+</div>
+                    <div class="stat-label">Events Planned</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">Client Satisfaction</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Support Available</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+ 
+
+    <!-- Events We Handle Section -->
+    <section class="py-20 px-4 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-16">Events We Handle</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Wedding Card -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div class="relative h-64">
+                        <img src="https://images.unsplash.com/photo-1519741497674-611481863552" alt="Wedding" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-6">
+                            <h3 class="text-2xl font-bold text-white mb-2">Weddings</h3>
+                            <p class="text-white/90">Your perfect day, perfectly planned</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-3 text-gray-600">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-pink-500 mr-2"></i>
+                                Venue Selection & Booking
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-pink-500 mr-2"></i>
+                                Catering & Menu Planning
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-pink-500 mr-2"></i>
+                                Photography & Videography
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-pink-500 mr-2"></i>
+                                Guest List Management
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Birthday Card -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div class="relative h-64">
+                        <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d" alt="Birthday" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-6">
+                            <h3 class="text-2xl font-bold text-white mb-2">Birthdays</h3>
+                            <p class="text-white/90">Celebrate in style</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-3 text-gray-600">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-pink-500 mr-2"></i>
+                                Theme & Decoration
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-pink-500 mr-2"></i>
+                                Entertainment & Activities
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-pink-500 mr-2"></i>
+                                Catering & Cake
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-pink-500 mr-2"></i>
+                                Party Favors & Gifts
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Reunion Card -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div class="relative h-64">
+                        <img src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce" alt="Reunion" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-6">
+                            <h3 class="text-2xl font-bold text-white mb-2">Reunions</h3>
+                            <p class="text-white/90">Bringing people together</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-3 text-gray-600">
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-pink-500 mr-2"></i>
+                                Location Scouting
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-pink-500 mr-2"></i>
+                                Guest Coordination
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-pink-500 mr-2"></i>
+                                Catering & Refreshments
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check text-pink-500 mr-2"></i>
+                                Activities & Entertainment
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Demo Section -->
+    <section class="video-demo-section">
+        <div class="video-demo-content">
+            <div class="video-demo-header">
+                <h2 class="video-demo-title">Experience the Magic</h2>
+                <p class="video-demo-subtitle">Watch how our innovative platform transforms your event planning journey into an unforgettable experience</p>
+            </div>
+            
+            <div class="video-wrapper">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                            title="Wedding App Demo" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                    </iframe>
+                    <div class="video-overlay">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works-section">
+        <div class="how-it-works-content">
+            <div class="how-it-works-header">
+                <h2 class="how-it-works-title">How It Works</h2>
+                <p class="how-it-works-subtitle">Your journey to a perfect event starts here. Follow these simple steps to create your dream celebration.</p>
+            </div>
+
+            <div class="timeline">
+                <!-- Step 1 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot">1</div>
+                    <div class="timeline-content">
+                        <div class="timeline-icon">
+                            <i class="fas fa-user-plus"></i>
+                        </div>
+                        <h3 class="timeline-title">Create Your Account</h3>
+                        <p class="timeline-description">Sign up for free and tell us about your dream event. Choose from wedding, corporate, or special occasions.</p>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot">2</div>
+                    <div class="timeline-content">
+                        <div class="timeline-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h3 class="timeline-title">Set Your Date</h3>
+                        <p class="timeline-description">Choose your preferred date and time. Our system will check availability and suggest optimal timing.</p>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot">3</div>
+                    <div class="timeline-content">
+                        <div class="timeline-icon">
+                            <i class="fas fa-list-check"></i>
+                        </div>
+                        <h3 class="timeline-title">Choose Your Services</h3>
+                        <p class="timeline-description">Select from our comprehensive range of services. From venue booking to catering, we've got you covered.</p>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot">4</div>
+                    <div class="timeline-content">
+                        <div class="timeline-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h3 class="timeline-title">Get Matched</h3>
+                        <p class="timeline-description">We'll connect you with your personal event planning agent who will guide you through every step.</p>
+                    </div>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot">5</div>
+                    <div class="timeline-content">
+                        <div class="timeline-icon">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <h3 class="timeline-title">Design Your Event</h3>
+                        <p class="timeline-description">Work with our design team to create your perfect theme, color scheme, and overall aesthetic.</p>
+                    </div>
+                </div>
+
+                <!-- Step 6 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot">6</div>
+                    <div class="timeline-content">
+                        <div class="timeline-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="timeline-title">Manage Guest List</h3>
+                        <p class="timeline-description">Create and manage your guest list, send digital invitations, and track RSVPs all in one place.</p>
+                    </div>
+                </div>
+
+                <!-- Step 7 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot">7</div>
+                    <div class="timeline-content">
+                        <div class="timeline-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <h3 class="timeline-title">Plan & Track</h3>
+                        <p class="timeline-description">Use our intuitive dashboard to plan and track every detail of your event in real-time.</p>
+                    </div>
+                </div>
+
+                <!-- Step 8 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot">8</div>
+                    <div class="timeline-content">
+                        <div class="timeline-icon">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <h3 class="timeline-title">Capture Memories</h3>
+                        <p class="timeline-description">Book photographers, videographers, and create a photo sharing platform for your guests.</p>
+                    </div>
+                </div>
+
+                <!-- Step 9 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot">9</div>
+                    <div class="timeline-content">
+                        <div class="timeline-icon">
+                            <i class="fas fa-champagne-glasses"></i>
+                        </div>
+                        <h3 class="timeline-title">Celebrate!</h3>
+                        <p class="timeline-description">Enjoy your perfect event while we handle all the details. Your special day, stress-free.</p>
+                    </div>
+                </div>
+
+                <!-- Step 10 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot">10</div>
+                    <div class="timeline-content">
+                        <div class="timeline-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3 class="timeline-title">Share Your Story</h3>
+                        <p class="timeline-description">Share your experience and inspire others with your beautiful event story.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-16">What Our Users Say</h2>
+            <div class="testimonials-grid" id="testimonials-container">
+                <!-- Testimonials will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio-section">
+    <section class="py-20 px-4 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-16">Real Event Portfolio</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="portfolio-container">
+                <!-- Portfolio items will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="py-20 px-4 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-16">Meet Our Team</h2>
+            <div class="flex justify-center mb-8 space-x-4">
+                <button class="filter-btn active px-4 py-2 rounded-full bg-white shadow-md" data-filter="all">All</button>
+                <button class="filter-btn px-4 py-2 rounded-full bg-white shadow-md" data-filter="planning">Planning</button>
+                <button class="filter-btn px-4 py-2 rounded-full bg-white shadow-md" data-filter="design">Design</button>
+                <button class="filter-btn px-4 py-2 rounded-full bg-white shadow-md" data-filter="logistics">Logistics</button>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8" id="team-container">
+                <!-- Team members will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="py-20 px-4 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-16">Choose Your Plan</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="pricing-card bg-white p-8 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold mb-4">Basic</h3>
+                    <p class="text-4xl font-bold mb-6">$99<span class="text-lg text-gray-600">/month</span></p>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Basic Planning Tools</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Email Support</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Guest List Management</li>
+                    </ul>
+                    <button class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition">Start Planning</button>
+                </div>
+                <div class="pricing-card bg-white p-8 rounded-lg shadow-md border-2 border-blue-600">
+                    <div class="absolute top-0 right-0 bg-blue-600 text-white px-4 py-1 rounded-bl-lg">Popular</div>
+                    <h3 class="text-2xl font-bold mb-4">Standard</h3>
+                    <p class="text-4xl font-bold mb-6">$199<span class="text-lg text-gray-600">/month</span></p>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> All Basic Features</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Personal Agent</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Venue Booking</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Budget Tracker</li>
+                    </ul>
+                    <button class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition">Start Planning</button>
+                </div>
+                <div class="pricing-card bg-white p-8 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold mb-4">Premium</h3>
+                    <p class="text-4xl font-bold mb-6">$299<span class="text-lg text-gray-600">/month</span></p>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> All Standard Features</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Custom Design</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> VIP Support</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-2"></i> Custom Items</li>
+                    </ul>
+                    <button class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition">Start Planning</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 px-4 bg-gray-50">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-16">Frequently Asked Questions</h2>
+            <div class="space-y-4" id="faq-container">
+                <!-- FAQ items will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="py-20 px-4 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-16">Latest Tips & Trends</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="blog-container">
+                <!-- Blog posts will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section class="py-20 px-4 bg-gray-50">
+        <div class="max-w-6xl mx-auto text-center">
+            <h2 class="text-4xl font-bold mb-8">Download Our App</h2>
+            <p class="text-xl text-gray-600 mb-8">4.9 ★ out of 1,200 reviews</p>
+            <div class="flex justify-center space-x-4">
+                <a href="#" class="flex items-center space-x-2 bg-black text-white px-6 py-3 rounded-lg hover:bg-gray-800 transition">
+                    <i class="fab fa-apple text-2xl"></i>
+                    <div class="text-left">
+                        <div class="text-xs">Download on the</div>
+                        <div class="text-sm font-semibold">App Store</div>
+                    </div>
+                </a>
+                <a href="#" class="flex items-center space-x-2 bg-black text-white px-6 py-3 rounded-lg hover:bg-gray-800 transition">
+                    <i class="fab fa-google-play text-2xl"></i>
+                    <div class="text-left">
+                        <div class="text-xs">GET IT ON</div>
+                        <div class="text-sm font-semibold">Google Play</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-20 px-4 bg-white">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-16">Get in Touch</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <form class="space-y-6">
+                    <div>
+                        <label class="block text-gray-700 mb-2">Name</label>
+                        <input type="text" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 mb-2">Email</label>
+                        <input type="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 mb-2">Phone</label>
+                        <input type="tel" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 mb-2">Message</label>
+                        <textarea class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500" rows="4"></textarea>
+                    </div>
+                    <button class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition">Send Message</button>
+                </form>
+                <div class="space-y-6">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-phone text-2xl text-blue-600"></i>
+                        <div>
+                            <h3 class="font-semibold">Phone</h3>
+                            <p class="text-gray-600">+1 (555) 123-4567</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-envelope text-2xl text-blue-600"></i>
+                        <div>
+                            <h3 class="font-semibold">Email</h3>
+                            <p class="text-gray-600">support@weddingapp.com</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <i class="fab fa-whatsapp text-2xl text-green-500"></i>
+                        <div>
+                            <h3 class="font-semibold">WhatsApp</h3>
+                            <p class="text-gray-600">+1 (555) 123-4567</p>
+                        </div>
+                    </div>
+                    <div class="flex space-x-4 mt-8">
+                        <a href="#" class="text-2xl text-gray-600 hover:text-blue-600"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-2xl text-gray-600 hover:text-blue-400"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-2xl text-gray-600 hover:text-pink-600"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-2xl text-gray-600 hover:text-blue-700"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-20 px-4 newsletter-section text-white">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl font-bold mb-8">Stay Updated</h2>
+            <p class="text-xl mb-8">Get planning tips, deals, and wedding inspiration straight to your inbox.</p>
+            <form class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
+                <input type="email" placeholder="Enter your email" class="flex-1 px-6 py-3 rounded-lg text-black focus:outline-none">
+                <button class="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 px-4">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Wedding App</h3>
+                    <p class="text-gray-400">Making your special day perfect.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">About</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Features</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Legal</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Terms & Conditions</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Cookie Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Connect With Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Wedding App. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Confetti animation
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+            document.querySelector('.hero-section').appendChild(confetti);
+            
+            setTimeout(() => {
+                confetti.remove();
+            }, 3000);
+        }
+
+        setInterval(createConfetti, 300);
+
+        // Testimonials data
+        const testimonials = [
+            {
+                name: "Sarah Johnson",
+                role: "Bride",
+                image: "https://randomuser.me/api/portraits/women/1.jpg",
+                quote: "This app made planning my wedding so much easier! The personal agent was amazing and helped me create the perfect day I always dreamed of.",
+                rating: 5,
+                date: "March 15, 2024"
+            },
+            {
+                name: "Michael Chen",
+                role: "Groom",
+                image: "https://randomuser.me/api/portraits/men/2.jpg",
+                quote: "The venue booking feature saved us so much time. The attention to detail and personalized service made our special day truly magical.",
+                rating: 5,
+                date: "March 10, 2024"
+            },
+            {
+                name: "Emma Davis",
+                role: "Event Planner",
+                image: "https://randomuser.me/api/portraits/women/3.jpg",
+                quote: "As a professional planner, I'm impressed by how comprehensive this app is. It's become an essential tool in my wedding planning toolkit.",
+                rating: 5,
+                date: "March 5, 2024"
+            }
+        ];
+
+        // Load testimonials
+        function loadTestimonials() {
+            const container = document.getElementById('testimonials-container');
+            testimonials.forEach(testimonial => {
+                const stars = Array(testimonial.rating).fill('<i class="fas fa-star"></i>').join('');
+                const card = `
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <img src="${testimonial.image}" alt="${testimonial.name}" class="testimonial-avatar">
+                            <div class="testimonial-info">
+                                <h3 class="testimonial-name">${testimonial.name}</h3>
+                                <p class="testimonial-role">${testimonial.role}</p>
+                            </div>
+                        </div>
+                        <p class="testimonial-quote">${testimonial.quote}</p>
+                        <div class="testimonial-footer">
+                            <div class="testimonial-rating">
+                                ${stars}
+                            </div>
+                            <span class="testimonial-date">${testimonial.date}</span>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += card;
+            });
+        }
+
+        // Initialize testimonials
+        document.addEventListener('DOMContentLoaded', loadTestimonials);
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Intersection Observer for animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in');
+                }
+            });
+        });
+
+        document.querySelectorAll('.step-card, .testimonial-card').forEach((el) => observer.observe(el));
+
+        // Portfolio data
+        const portfolioItems = [
+            {
+                image: "https://images.unsplash.com/photo-1519741497674-611481863552",
+                title: "Summer Garden Wedding",
+                services: "Full Planning, Design, Catering",
+                quote: "A magical day in the garden"
+            },
+            {
+                image: "https://images.unsplash.com/photo-1519741497674-611481863552",
+                title: "Modern City Celebration",
+                services: "Venue Booking, Catering, Entertainment",
+                quote: "Urban elegance at its finest"
+            },
+            {
+                image: "https://images.unsplash.com/photo-1519741497674-611481863552",
+                title: "Beachside Ceremony",
+                services: "Full Planning, Photography, Catering",
+                quote: "Sunset magic on the beach"
+            }
+        ];
+
+        // Team data
+        const teamMembers = [
+            {
+                name: "Sarah Johnson",
+                role: "Lead Planner",
+                department: "planning",
+                image: "https://randomuser.me/api/portraits/women/1.jpg"
+            },
+            {
+                name: "Michael Chen",
+                role: "Design Director",
+                department: "design",
+                image: "https://randomuser.me/api/portraits/men/2.jpg"
+            },
+            {
+                name: "Emma Davis",
+                role: "Logistics Manager",
+                department: "logistics",
+                image: "https://randomuser.me/api/portraits/women/3.jpg"
+            },
+            {
+                name: "David Wilson",
+                role: "Senior Planner",
+                department: "planning",
+                image: "https://randomuser.me/api/portraits/men/4.jpg"
+            }
+        ];
+
+        // FAQ data
+        const faqItems = [
+            {
+                question: "How do I request a specific hotel?",
+                answer: "You can request specific hotels through our app's venue booking feature. Your personal agent will help you secure the best rates and availability."
+            },
+            {
+                question: "What if I need to cancel or reschedule?",
+                answer: "We offer flexible cancellation policies. Contact your personal agent to discuss your options and any applicable fees."
+            },
+            {
+                question: "Is the app free to use?",
+                answer: "We offer a free trial period. After that, you can choose from our Basic, Standard, or Premium plans to continue using the app."
+            }
+        ];
+
+        // Blog data
+        const blogPosts = [
+            {
+                title: "Top 10 Wedding Themes of the Year",
+                image: "https://images.unsplash.com/photo-1519741497674-611481863552",
+                excerpt: "Discover the most popular wedding themes that are trending this year."
+            },
+            {
+                title: "Checklist for a Perfect Outdoor Ceremony",
+                image: "https://images.unsplash.com/photo-1519741497674-611481863552",
+                excerpt: "Everything you need to know to plan the perfect outdoor wedding."
+            },
+            {
+                title: "How to Choose the Right Venue",
+                image: "https://images.unsplash.com/photo-1519741497674-611481863552",
+                excerpt: "Expert tips on selecting the perfect venue for your special day."
+            }
+        ];
+
+        // Load portfolio items
+        function loadPortfolio() {
+            const container = document.getElementById('portfolio-container');
+            portfolioItems.forEach(item => {
+                const card = `
+                    <div class="portfolio-card rounded-lg overflow-hidden">
+                        <img src="${item.image}" alt="${item.title}" class="w-full h-64 object-cover">
+                        <div class="portfolio-overlay">
+                            <h3 class="text-xl font-semibold mb-2">${item.title}</h3>
+                            <p class="text-sm mb-2">${item.services}</p>
+                            <p class="text-sm italic">"${item.quote}"</p>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += card;
+            });
+        }
+
+        // Load team members
+        function loadTeam() {
+            const container = document.getElementById('team-container');
+            teamMembers.forEach(member => {
+                const card = `
+                    <div class="team-card bg-white p-6 rounded-lg shadow-md text-center" data-department="${member.department}">
+                        <img src="${member.image}" alt="${member.name}" class="w-32 h-32 rounded-full mx-auto mb-4">
+                        <h3 class="text-xl font-semibold mb-2">${member.name}</h3>
+                        <p class="text-gray-600">${member.role}</p>
+                    </div>
+                `;
+                container.innerHTML += card;
+            });
+        }
+
+        // Load FAQ items
+        function loadFAQ() {
+            const container = document.getElementById('faq-container');
+            faqItems.forEach(item => {
+                const faqItem = `
+                    <div class="faq-item bg-white p-6 rounded-lg shadow-md">
+                        <div class="faq-question flex justify-between items-center cursor-pointer">
+                            <h3 class="text-lg font-semibold">${item.question}</h3>
+                            <i class="fas fa-plus transition-transform duration-300"></i>
+                        </div>
+                        <div class="faq-answer overflow-hidden transition-all duration-300">
+                            <p class="text-gray-600 mt-4">${item.answer}</p>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += faqItem;
+            });
+
+            // Add click event listeners to FAQ items
+            document.querySelectorAll('.faq-item').forEach(item => {
+                const question = item.querySelector('.faq-question');
+                const icon = item.querySelector('.fa-plus');
+                
+                question.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+                    
+                    // Close all FAQ items
+                    document.querySelectorAll('.faq-item').forEach(faqItem => {
+                        faqItem.classList.remove('active');
+                        faqItem.querySelector('.fa-plus').style.transform = 'rotate(0deg)';
+                    });
+                    
+                    // Open clicked item if it wasn't active
+                    if (!isActive) {
+                        item.classList.add('active');
+                        icon.style.transform = 'rotate(45deg)';
+                    }
+                });
+            });
+        }
+
+        // Load blog posts
+        function loadBlog() {
+            const container = document.getElementById('blog-container');
+            blogPosts.forEach(post => {
+                const card = `
+                    <div class="blog-card bg-white rounded-lg shadow-md overflow-hidden">
+                        <img src="${post.image}" alt="${post.title}" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2">${post.title}</h3>
+                            <p class="text-gray-600">${post.excerpt}</p>
+                            <a href="#" class="text-blue-600 hover:text-blue-800 mt-4 inline-block">Read More →</a>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += card;
+            });
+        }
+
+        // Initialize all sections
+        document.addEventListener('DOMContentLoaded', () => {
+            loadPortfolio();
+            loadTeam();
+            loadFAQ();
+            loadBlog();
+
+            // FAQ accordion functionality
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    item.classList.toggle('active');
+                    const icon = item.querySelector('.fa-chevron-down');
+                    icon.style.transform = item.classList.contains('active') ? 'rotate(180deg)' : '';
+                });
+            });
+
+            // Team filter functionality
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    const filter = btn.dataset.filter;
+                    document.querySelectorAll('.team-card').forEach(card => {
+                        if (filter === 'all' || card.dataset.department === filter) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            // Animate steps on scroll
+            const steps = document.querySelectorAll('.how-it-works-step');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-fade-in');
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            steps.forEach(step => {
+                step.style.opacity = '0';
+                step.style.transform = 'translateY(20px)';
+                step.style.transition = 'all 0.5s ease-out';
+                observer.observe(step);
+            });
+        });
+    </script>
+</body>
+</html> 

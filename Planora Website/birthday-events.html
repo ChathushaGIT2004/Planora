@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Events - Planora</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #FF6B6B;
+            --secondary-color: #FF9E9E;
+            --accent-color: #FFB5B5;
+            --text-color: #4A4A4A;
+            --text-light: #888888;
+            --white: #ffffff;
+            --gray-light: #f5f5f5;
+            --background: #FFF5F5;
+            --gradient-1: linear-gradient(135deg, #FF6B6B, #FF9E9E);
+            --gradient-2: linear-gradient(135deg, #FF9E9E, #FFB5B5);
+            --shadow-soft: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-strong: 0 8px 15px rgba(0, 0, 0, 0.15);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --radius-full: 9999px;
+            --transition-fast: 0.3s ease;
+            --transition-normal: 0.5s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: var(--transition-fast);
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition-fast);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-1);
+            transition: var(--transition-fast);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .event-hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                        url('https://images.unsplash.com/photo-1530103862676-de8c9debad1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 1rem;
+            margin-top: 0;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            color: var(--white);
+            animation: fadeIn 1s ease-out;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            padding: 5rem 5%;
+            background: var(--white);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--text-color);
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--gradient-1);
+            border-radius: var(--radius-full);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition-normal);
+            aspect-ratio: 4/3;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-strong);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-normal);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            color: var(--white);
+            transform: translateY(100%);
+            transition: var(--transition-normal);
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        .gallery-caption h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Event Details Section */
+        .event-details {
+            padding: 5rem 5%;
+            background: var(--background);
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .detail-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            text-align: center;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition-normal);
+        }
+
+        .detail-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-strong);
+        }
+
+        .detail-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: var(--white);
+            font-size: 2rem;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .detail-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+
+        .detail-card p {
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 5rem 5%;
+            background: var(--white);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial-card {
+            background: var(--background);
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition-normal);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-strong);
+        }
+
+        .testimonial-content {
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-content i {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .testimonial-author img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            color: var(--text-color);
+            margin-bottom: 0.25rem;
+        }
+
+        .author-info p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 5rem 5%;
+            background: var(--gradient-1);
+            text-align: center;
+            color: var(--white);
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2.5rem;
+            border-radius: var(--radius-lg);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all var(--transition-fast);
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            position: relative;
+            overflow: hidden;
+            font-size: 1rem;
+            min-width: 200px;
+            gap: 0.5rem;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1), rgba(255,255,255,0));
+            transform: translateX(-100%);
+            transition: transform var(--transition-normal);
+        }
+
+        .btn:hover::before {
+            transform: translateX(0);
+        }
+
+        .btn-primary {
+            background: var(--white);
+            color: var(--primary-color);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-strong);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+            backdrop-filter: blur(5px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--text-color);
+            color: var(--white);
+            padding: 4rem 5% 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .footer-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: var(--transition-fast);
+        }
+
+        .footer-section a:hover {
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .copyright {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header {
+                padding: 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+
+            .details-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .btn {
+                min-width: 180px;
+                padding: 0.8rem 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-logo {
+                margin: 0 auto 1rem;
+            }
+        }
+
+        /* How It Works Section Styles */
+        .how-it-works {
+            padding: 5rem 5%;
+            background: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .timeline-container {
+            max-width: 1200px;
+            margin: 4rem auto 0;
+            padding: 0 1rem;
+            position: relative;
+        }
+
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: var(--gradient-1);
+            border-radius: var(--radius-full);
+        }
+
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: center;
+            padding: 2rem 0;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: 2rem;
+            text-align: left;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-right: 2rem;
+            text-align: right;
+            order: -1;
+        }
+
+        .timeline-dot {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.5rem;
+            box-shadow: var(--shadow-soft);
+            position: relative;
+            z-index: 2;
+            transition: var(--transition-normal);
+        }
+
+        .timeline-item:hover .timeline-dot {
+            transform: scale(1.1);
+            box-shadow: var(--shadow-strong);
+        }
+
+        .timeline-content {
+            width: 45%;
+            background: var(--background);
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition-normal);
+        }
+
+        .timeline-item:hover .timeline-content {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-strong);
+        }
+
+        .timeline-content h3 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-content p {
+            color: var(--text-light);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Responsive Timeline */
+        @media (max-width: 768px) {
+            .timeline-container::before {
+                left: 30px;
+            }
+
+            .timeline-item {
+                justify-content: flex-start;
+                padding-left: 60px;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content {
+                width: calc(100% - 90px);
+                margin: 0;
+                text-align: left;
+                order: 1;
+            }
+
+            .timeline-dot {
+                position: absolute;
+                left: 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .timeline-content {
+                padding: 1.5rem;
+            }
+
+            .timeline-content h3 {
+                font-size: 1.3rem;
+            }
+
+            .timeline-dot {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <a href="index2.html" class="logo">Planora</a>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="index2.html">Home</a></li>
+                <li><a href="index2.html#about">About</a></li>
+                <li><a href="index2.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="event-hero">
+        <div class="hero-content">
+            <h1>Birthday Celebrations</h1>
+            <p>Make every birthday special with our creative and personalized celebration planning. From themed parties to milestone celebrations, we bring your vision to life.</p>
+            <div class="hero-buttons">
+                <a href="signup.html" class="btn btn-primary">
+                    <i class="fas fa-user-plus"></i>
+                    Start Planning
+                </a>
+                <a href="#birthday-gallery" class="btn btn-secondary">
+                    <i class="fas fa-images"></i>
+                    View Gallery
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section" id="birthday-gallery">
+        <h2 class="section-title">Featured Birthday Parties</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Kids Birthday Party">
+                <div class="gallery-caption">
+                    <h3>Magical Kids Party</h3>
+                    <p>Emma's 8th Birthday Celebration</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Teen Birthday Party">
+                <div class="gallery-caption">
+                    <h3>Teen Dream Party</h3>
+                    <p>Alex's Sweet 16 Celebration</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Adult Birthday Party">
+                <div class="gallery-caption">
+                    <h3>Elegant 30th Birthday</h3>
+                    <p>Sophia's Milestone Celebration</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Surprise Party">
+                <div class="gallery-caption">
+                    <h3>Surprise Party</h3>
+                    <p>Michael's 40th Birthday Surprise</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Themed Party">
+                <div class="gallery-caption">
+                    <h3>Hollywood Theme Party</h3>
+                    <p>David's Star-Studded Celebration</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Outdoor Party">
+                <div class="gallery-caption">
+                    <h3>Garden Party</h3>
+                    <p>Sarah's Summer Birthday Bash</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Details Section -->
+    <section class="event-details">
+        <h2 class="section-title">Our Birthday Services</h2>
+        <div class="details-grid">
+            <div class="detail-card">
+                <div class="detail-icon">
+                    <i class="fas fa-birthday-cake"></i>
+                </div>
+                <h3>Theme Planning</h3>
+                <p>From superheroes to princesses, we create magical themed celebrations for all ages. Our creative team brings your vision to life with unique decorations and activities.</p>
+            </div>
+            <div class="detail-card">
+                <div class="detail-icon">
+                    <i class="fas fa-magic"></i>
+                </div>
+                <h3>Entertainment</h3>
+                <p>Professional entertainers, games, and activities to keep guests engaged and having fun. We coordinate everything from DJs to magicians and party games.</p>
+            </div>
+            <div class="detail-card">
+                <div class="detail-icon">
+                    <i class="fas fa-utensils"></i>
+                </div>
+                <h3>Catering</h3>
+                <p>Delicious food and drinks tailored to your party theme and guest preferences. From gourmet buffets to themed dessert tables, we handle all catering needs.</p>
+            </div>
+            <div class="detail-card">
+                <div class="detail-icon">
+                    <i class="fas fa-gift"></i>
+                </div>
+                <h3>Party Favors</h3>
+                <p>Custom party favors and decorations to make your celebration memorable. We create personalized gifts that match your party theme and leave a lasting impression.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+        <h2 class="section-title">How It Works</h2>
+        <div class="timeline-container">
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot">
+                        <i class="fas fa-calendar-plus"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Book a Consultation</h3>
+                        <p>Schedule a free consultation with our expert planners to discuss your vision and requirements.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Choose Your Theme</h3>
+                        <p>Select from our curated themes or create a custom one that matches your celebration style.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Venue Selection</h3>
+                        <p>Browse and book the perfect venue from our network of trusted partners.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Menu Planning</h3>
+                        <p>Design a custom menu with our catering partners to delight your guests.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Decor & Entertainment</h3>
+                        <p>Add the perfect decorations and entertainment to create an unforgettable atmosphere.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Final Review</h3>
+                        <p>Review all details and make any final adjustments before your big day.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot">
+                        <i class="fas fa-birthday-cake"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h3>Celebrate!</h3>
+                        <p>Enjoy your perfect birthday celebration while we handle all the details.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <h2 class="section-title">Happy Birthday Hosts</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    <i class="fas fa-quote-left"></i>
+                    <p>"Planora created the most magical birthday party for my daughter. The attention to detail was incredible, and the themed decorations were absolutely perfect!"</p>
+                </div>
+                <div class="testimonial-author">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Lisa">
+                    <div class="author-info">
+                        <h4>Lisa</h4>
+                        <p>Kids Party Host</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    <i class="fas fa-quote-left"></i>
+                    <p>"My surprise 40th birthday party was absolutely perfect. The team handled everything flawlessly, from the venue setup to the entertainment and catering."</p>
+                </div>
+                <div class="testimonial-author">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Michael">
+                    <div class="author-info">
+                        <h4>Michael</h4>
+                        <p>Surprise Party Guest</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    <i class="fas fa-quote-left"></i>
+                    <p>"The themed decorations and entertainment made my daughter's sweet 16 unforgettable. The team went above and beyond to create a magical experience!"</p>
+                </div>
+                <div class="testimonial-author">
+                    <img src="https://images.unsplash.com/photo-1573497019940-1c69c17a67c6?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Sarah">
+                    <div class="author-info">
+                        <h4>Sarah</h4>
+                        <p>Teen Party Host</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>Ready to Plan Your Perfect Birthday Party?</h2>
+        <p>Let us help you create an unforgettable celebration. Our team of experts is ready to make your birthday party special.</p>
+        <a href="signup.html" class="btn btn-primary">
+            <i class="fas fa-calendar-check"></i>
+            Start Planning Now
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <a href="index2.html" class="footer-logo">Planora</a>
+                <p>Making event planning effortless and enjoyable for everyone worldwide.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index2.html">Home</a></li>
+                    <li><a href="index2.html#about">About</a></li>
+                    <li><a href="index2.html#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: support@planora.com</p>
+                <p>Phone: +1 (555) 123-4567</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="copyright">© Planora 2024. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add scroll-based header background
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 50) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = 'var(--shadow-soft)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html> 

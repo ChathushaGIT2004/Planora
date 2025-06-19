@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap');
+
+:root {
+    --primary-color: #FF1493; /* Deep Pink */
+    --secondary-color: #FF69B4; /* Hot Pink */
+    --accent-color: #FFB6C1; /* Light Pink */
+    --text-color: #4A4A4A;
+    --text-light: #888888;
+    --white: #ffffff;
+    --gray-light: #f5f5f5;
+    --background: #FFF0F5; /* Lavender Blush */
+    --gradient-1: linear-gradient(135deg, #FF1493 0%, #FF69B4 100%);
+    --shadow-soft: 0 4px 15px rgba(255, 20, 147, 0.1);
+    --shadow-strong: 0 8px 30px rgba(255, 20, 147, 0.15);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Dancing Script', cursive;
+}
+
+body {
+    color: var(--text-color);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    min-height: 100vh;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid var(--gray-light);
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(255, 20, 147, 0.1);
+}
+
+.submit-button {
+    width: 100%;
+    padding: 1rem;
+    background: var(--gradient-1);
+    color: var(--white);
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.submit-button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-strong);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .container {
+        gap: 2rem;
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0.5rem;
+    }
+    
+    .form-group {
+        margin-bottom: 1rem;
+    }
+} 

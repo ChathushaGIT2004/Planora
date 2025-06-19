@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planora - Welcome</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            /* Primary Colors */
+            --primary-color: #FF69B4;
+            --secondary-color: #FFB6C1;
+            --accent-color: #FFC0CB;
+            
+            /* Text Colors */
+            --text-color: #4A4A4A;
+            --text-light: #888888;
+            --text-white: #ffffff;
+            
+            /* Background Colors */
+            --background: #FFF5F7;
+            --white: #ffffff;
+            --gray-light: #f5f5f5;
+            --gray-dark: #333333;
+            
+            /* Gradients */
+            --gradient-1: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            --gradient-2: linear-gradient(135deg, var(--accent-color) 0%, var(--secondary-color) 100%);
+            --gradient-dark: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7));
+            
+            /* Shadows */
+            --shadow-soft: 0 4px 15px rgba(255, 105, 180, 0.1);
+            --shadow-strong: 0 8px 30px rgba(255, 105, 180, 0.15);
+            --shadow-hover: 0 15px 40px rgba(255, 105, 180, 0.2);
+            
+            /* Spacing */
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 3rem;
+            --spacing-xl: 4rem;
+            
+            /* Border Radius */
+            --radius-sm: 8px;
+            --radius-md: 15px;
+            --radius-lg: 25px;
+            --radius-full: 50%;
+            
+            /* Transitions */
+            --transition-fast: 0.3s ease;
+            --transition-normal: 0.5s ease;
+            --transition-slow: 0.8s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .main-container {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header Styles */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: var(--spacing-md) 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: var(--transition-fast);
+        }
+
+        .header.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-white);
+            font-family: 'Playfair Display', serif;
+            transition: var(--transition-fast);
+        }
+
+        .header.scrolled .logo {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--text-white);
+            overflow: hidden;
+        }
+
+        .slider-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .slider {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-dark);
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            padding: 0 var(--spacing-md);
+            position: relative;
+            z-index: 2;
+        }
+
+        .welcome-text {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: var(--spacing-lg);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .button-container {
+            display: flex;
+            gap: var(--spacing-md);
+            justify-content: center;
+            margin-top: var(--spacing-xl);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease 0.3s forwards;
+        }
+
+        .landing-button {
+            display: inline-block;
+            padding: 1.2rem 2.5rem;
+            border-radius: var(--radius-lg);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: var(--transition-fast);
+            text-align: center;
+            cursor: pointer;
+            border: none;
+            font-size: 1.1rem;
+            min-width: 250px;
+        }
+
+        .landing-button.plan {
+            background: var(--gradient-1);
+            color: var(--text-white);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .landing-button.sell {
+            background: var(--white);
+            color: var(--primary-color);
+            box-shadow: var(--shadow-soft);
+            border: 2px solid var(--primary-color);
+        }
+
+        .landing-button:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-strong);
+        }
+
+        .landing-button.plan:hover {
+            background: var(--gradient-2);
+        }
+
+        .landing-button.sell:hover {
+            background: var(--primary-color);
+            color: var(--text-white);
+        }
+
+        .slider-nav {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 2;
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+
+        .slider-dot.active {
+            background: var(--text-white);
+            transform: scale(1.2);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .welcome-text {
+                font-size: 2.5rem;
+            }
+
+            .button-container {
+                flex-direction: column;
+                padding: 0 var(--spacing-md);
+            }
+
+            .landing-button {
+                width: 100%;
+            }
+
+            .header {
+                padding: var(--spacing-sm) 5%;
+            }
+
+            .logo {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <header class="header">
+            <a href="#" class="logo">Planora</a>
+        </header>
+
+        <section class="hero">
+            <div class="slider-container">
+                <div class="slider">
+                    <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')">
+                        <div class="slide-content">
+                            <h2>Your Perfect Wedding Awaits</h2>
+                            <p>Let us help you create the wedding of your dreams</p>
+                        </div>
+                    </div>
+                    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')">
+                        <div class="slide-content">
+                            <h2>Connect with Top Vendors</h2>
+                            <p>Find the best services for your special day</p>
+                        </div>
+                    </div>
+                    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')">
+                        <div class="slide-content">
+                            <h2>Grow Your Business</h2>
+                            <p>Join our platform and reach more clients</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="slider-nav">
+                    <div class="slider-dot active"></div>
+                    <div class="slider-dot"></div>
+                    <div class="slider-dot"></div>
+                </div>
+            </div>
+
+            <div class="hero-content">
+                <h1 class="welcome-text">I am here for</h1>
+                <div class="button-container">
+                    <a href="index2.html" class="landing-button plan">Plan My Wedding</a>
+                    <a href="vendor.html" class="landing-button sell">Sell My Service</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Slider functionality
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.slider-dot');
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            slides[index].classList.add('active');
+            dots[index].classList.add('active');
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        // Add click events to dots
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentSlide = index;
+                showSlide(currentSlide);
+            });
+        });
+
+        // Auto slide every 5 seconds
+        setInterval(nextSlide, 5000);
+    </script>
+</body>
+</html> 

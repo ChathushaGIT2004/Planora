@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planora - For Vendors</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            /* Primary Colors */
+            --primary-color: #FF69B4;
+            --secondary-color: #FFB6C1;
+            --accent-color: #FFC0CB;
+            
+            /* Text Colors */
+            --text-color: #4A4A4A;
+            --text-light: #888888;
+            --text-white: #ffffff;
+            
+            /* Background Colors */
+            --background: #FFF5F7;
+            --white: #ffffff;
+            --gray-light: #f5f5f5;
+            --gray-dark: #333333;
+            
+            /* Gradients */
+            --gradient-1: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            --gradient-2: linear-gradient(135deg, var(--accent-color) 0%, var(--secondary-color) 100%);
+            --gradient-dark: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7));
+            
+            /* Shadows */
+            --shadow-soft: 0 4px 15px rgba(255, 105, 180, 0.1);
+            --shadow-strong: 0 8px 30px rgba(255, 105, 180, 0.15);
+            --shadow-hover: 0 15px 40px rgba(255, 105, 180, 0.2);
+            
+            /* Spacing */
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 3rem;
+            --spacing-xl: 4rem;
+            
+            /* Border Radius */
+            --radius-sm: 8px;
+            --radius-md: 15px;
+            --radius-lg: 25px;
+            --radius-full: 50%;
+            
+            /* Transitions */
+            --transition-fast: 0.3s ease;
+            --transition-normal: 0.5s ease;
+            --transition-slow: 0.8s ease;
+            
+            /* Container Widths */
+            --container-sm: 640px;
+            --container-md: 768px;
+            --container-lg: 1024px;
+            --container-xl: 1200px;
+        }
+
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background);
+            overflow-x: hidden;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            line-height: 1.3;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        p {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition-fast);
+        }
+
+        /* Common Components */
+        .section-container {
+            max-width: var(--container-xl);
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-md);
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient-1);
+            border-radius: var(--radius-sm);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto var(--spacing-lg);
+        }
+
+        /* Buttons */
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            border-radius: var(--radius-lg);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: var(--transition-fast);
+            text-align: center;
+            cursor: pointer;
+            border: none;
+        }
+
+        .cta-button:not(.secondary) {
+            background: var(--gradient-1);
+            color: var(--text-white);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            color: var(--text-white);
+            border: 2px solid var(--text-white);
+            backdrop-filter: blur(5px);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-strong);
+        }
+
+        .cta-button.secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--primary-color);
+        }
+
+        /* Header Styles */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: transparent;
+            z-index: 1000;
+            padding: var(--spacing-md) 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition-fast);
+        }
+
+        .header.scrolled {
+            padding: var(--spacing-sm) 5%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-white);
+            font-family: 'Playfair Display', serif;
+            transition: var(--transition-fast);
+        }
+
+        .header.scrolled .logo {
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: var(--spacing-md);
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-white);
+            font-weight: 500;
+            position: relative;
+        }
+
+        .header.scrolled .nav-links a {
+            color: var(--text-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-1);
+            transition: var(--transition-fast);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: var(--gradient-dark), url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--text-white);
+            padding: 0 var(--spacing-md);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        /* Features Section */
+        .features {
+            padding: var(--spacing-xl) 0;
+            background: var(--white);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: var(--spacing-md);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition-fast);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        /* Benefits Section */
+        .benefits {
+            padding: var(--spacing-xl) 0;
+            background: var(--background);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
+        }
+
+        .benefit-card {
+            background: var(--white);
+            padding: var(--spacing-md);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-soft);
+            text-align: center;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: var(--spacing-xl) 0;
+            background: var(--gradient-1);
+            color: var(--text-white);
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--gray-dark);
+            color: var(--text-white);
+            padding: var(--spacing-xl) 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-lg);
+        }
+
+        .footer-section h3 {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-sm);
+        }
+
+        .social-links a {
+            color: var(--text-white);
+            font-size: 1.5rem;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="index.html" class="logo">Planora</a>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#benefits">Benefits</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Grow Your Business with Planora</h1>
+            <p>Join our platform and connect with thousands of event planners looking for your services. Showcase your expertise, manage bookings, and grow your business.</p>
+            <a href="#register" class="cta-button">Become a Vendor</a>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="section-container">
+            <h2 class="section-title">Why Choose Planora?</h2>
+            <p class="section-subtitle">Discover how our platform can help you expand your business and reach more clients</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-users feature-icon"></i>
+                    <h3>Wide Customer Base</h3>
+                    <p>Connect with thousands of event planners actively seeking vendors like you.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-calendar-check feature-icon"></i>
+                    <h3>Easy Booking Management</h3>
+                    <p>Streamline your booking process with our intuitive calendar and scheduling system.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-star feature-icon"></i>
+                    <h3>Build Your Reputation</h3>
+                    <p>Collect reviews and ratings to showcase your quality service to potential clients.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="benefits" class="benefits">
+        <div class="section-container">
+            <h2 class="section-title">Benefits for Vendors</h2>
+            <p class="section-subtitle">See how Planora can transform your business</p>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <h3>Increased Visibility</h3>
+                    <p>Get discovered by event planners actively searching for your services.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>Business Growth</h3>
+                    <p>Expand your client base and increase your revenue with our platform.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>Time Management</h3>
+                    <p>Save time with automated booking and communication tools.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="section-container">
+            <div class="cta-content">
+                <h2>Ready to Grow Your Business?</h2>
+                <p>Join Planora today and start connecting with event planners in your area.</p>
+                <a href="#register" class="cta-button secondary">Get Started Now</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="section-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Planora</h3>
+                    <p>Connecting event planners with the best vendors to create unforgettable experiences.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#benefits">Benefits</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p>Email: vendors@planora.com</p>
+                    <p>Phone: (555) 123-4567</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html> 

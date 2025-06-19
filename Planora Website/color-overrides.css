@@ -1,0 +1,18 @@
+:root {
+    /* Primary Colors */
+    --primary-color: #7F55B1;
+    --secondary-color: #9B7EBD;
+    --accent-color: #F49BAB;
+    
+    /* Background Colors */
+    --background: #FFE1E0;
+    
+    /* Gradients */
+    --gradient-1: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    --gradient-2: linear-gradient(135deg, var(--accent-color) 0%, var(--secondary-color) 100%);
+    
+    /* Shadows */
+    --shadow-soft: 0 4px 15px rgba(127, 85, 177, 0.1);
+    --shadow-strong: 0 8px 30px rgba(127, 85, 177, 0.15);
+    --shadow-hover: 0 15px 40px rgba(127, 85, 177, 0.2);
+} 

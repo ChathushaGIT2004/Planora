@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendor Registration - Wedding Planner</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/vendor-services.css">
+    <style>
+        :root {
+            --primary-color: #FFD700;
+            --secondary-color: #FFB6C1;
+            --text-color: #333;
+            --white: #ffffff;
+            --gray-light: #f5f5f5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-color);
+            background: var(--gray-light);
+        }
+
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                        url('https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 6rem 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .form-container {
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+        }
+
+        .benefits-section {
+            background: linear-gradient(135deg, #ffffff, #f8f9fa);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 4rem 2rem;
+            margin-top: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .benefits-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') center/cover;
+            opacity: 0.05;
+            z-index: 0;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+            margin-top: 3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .benefit-item {
+            text-align: center;
+            padding: 2.5rem;
+            background: var(--white);
+            border-radius: 20px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .benefit-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), #FFA500);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .benefit-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .benefit-item:hover::before {
+            transform: scaleX(1);
+        }
+
+        .benefit-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(45deg, var(--primary-color), #FFA500);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: rotate(-10deg);
+            transition: transform 0.4s ease;
+        }
+
+        .benefit-item:hover .benefit-icon {
+            transform: rotate(0deg);
+        }
+
+        .benefit-icon i {
+            font-size: 2.5rem;
+            color: var(--white);
+        }
+
+        .benefit-content h3 {
+            font-size: 1.4rem;
+            color: var(--text-color);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .benefit-content h3::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.4s ease;
+        }
+
+        .benefit-item:hover .benefit-content h3::after {
+            width: 80px;
+        }
+
+        .benefit-content p {
+            color: #666;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 4rem;
+            padding-top: 3rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--primary-color), #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-color);
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .header::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(45deg, var(--primary-color), #FFA500);
+            margin: 1rem auto;
+        }
+
+        .header h1 {
+            color: var(--text-color);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .vendor-form {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-group select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23333' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            padding-right: 2.5rem;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+        }
+
+        .submit-section {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .cancel-button {
+            padding: 0.8rem 1.5rem;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            background: var(--white);
+            color: var(--text-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cancel-button:hover {
+            background: #f5f5f5;
+        }
+
+        .submit-button {
+            background: linear-gradient(45deg, var(--primary-color), #FFA500);
+            color: var(--white);
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-color);
+            text-decoration: none;
+            margin-bottom: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--primary-color);
+        }
+
+        .required-field::after {
+            content: " *";
+            color: #ff4444;
+        }
+
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+            background: #e8f5e9;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .success-message.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .benefits-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form-section {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            color: var(--text-color);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+        .logo-upload {
+            text-align: center;
+            padding: 2rem;
+            border: 2px dashed #ddd;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .logo-upload:hover {
+            border-color: var(--primary-color);
+            background: rgba(255, 215, 0, 0.05);
+        }
+
+        .logo-upload i {
+            font-size: 3rem;
+            color: #ddd;
+            margin-bottom: 1rem;
+        }
+
+        .logo-upload p {
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .logo-upload .file-types {
+            font-size: 0.8rem;
+            color: #999;
+        }
+
+        .logo-preview {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto;
+            border-radius: 10px;
+            overflow: hidden;
+            display: none;
+        }
+
+        .logo-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-section:last-child {
+            margin-bottom: 0;
+        }
+
+        /* New Promotional Content Styles */
+        .promo-section {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            padding: 3rem 2rem;
+            margin: 3rem 0;
+            border-radius: 15px;
+            color: var(--white);
+        }
+
+        .promo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .promo-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+        }
+
+        .promo-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .promo-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .promo-card p {
+            margin-bottom: 1.5rem;
+        }
+
+        .promo-price {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .promo-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .promo-features li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .promo-features li i {
+            margin-right: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .payment-section {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+        }
+
+        .payment-methods {
+            display: flex;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .payment-method {
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .payment-method:hover {
+            border-color: var(--primary-color);
+        }
+
+        .payment-method.selected {
+            border-color: var(--primary-color);
+            background: var(--gray-light);
+        }
+
+        .secure-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #28a745;
+            margin-top: 1rem;
+        }
+
+        .secure-badge i {
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="hero-section">
+        <div class="hero-content">
+            <h1>Join Our Network of Wedding Vendors</h1>
+            <p>Connect with couples planning their special day and grow your business</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="form-container">
+            <a href="index2.html" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                Back to Home
+            </a>
+
+            <div class="header">
+                <h1>Register as a Vendor</h1>
+                <p>Join our network of trusted wedding vendors and grow your business</p>
+            </div>
+
+            <div class="success-message" id="successMessage">
+                <i class="fas fa-check-circle" style="font-size: 3rem; color: #4CAF50; margin-bottom: 1rem;"></i>
+                <h2>Registration Submitted!</h2>
+                <p>Thank you for your registration. We will review your application and get back to you soon.</p>
+            </div>
+
+            <form class="vendor-form" id="vendorForm">
+                <!-- Business Information Section -->
+                <div class="form-section">
+                    <h2 class="section-title">Business Information</h2>
+                    
+                    <div class="logo-upload" id="logoUpload">
+                        <div class="logo-preview" id="logoPreview">
+                            <img src="" alt="Business Logo Preview">
+                        </div>
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>Upload your business logo</p>
+                        <p class="file-types">PNG, JPG, or SVG (Max 2MB)</p>
+                        <input type="file" id="logoInput" accept="image/*" style="display: none;">
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="businessName" class="required-field">Business Name</label>
+                            <input type="text" id="businessName" name="businessName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="vendorType" class="required-field">Vendor Type</label>
+                            <select id="vendorType" name="vendorType" required>
+                                <option value="">Select Vendor Type</option>
+                                <option value="venue">Venue</option>
+                                <option value="catering">Catering</option>
+                                <option value="photography">Photography</option>
+                                <option value="florist">Florist</option>
+                                <option value="music">Music & Entertainment</option>
+                                <option value="attire">Wedding Attire</option>
+                                <option value="beauty">Beauty & Makeup</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Information Section -->
+                <div class="form-section">
+                    <h2 class="section-title">Contact Information</h2>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="contactName" class="required-field">Contact Person</label>
+                            <input type="text" id="contactName" name="contactName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="required-field">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" class="required-field">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="website">Website</label>
+                            <input type="url" id="website" name="website">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Business Details Section -->
+                <div class="form-section">
+                    <h2 class="section-title">Business Details</h2>
+                    <div class="form-grid">
+                        <div class="form-group full-width">
+                            <label for="address" class="required-field">Business Address</label>
+                            <textarea id="address" name="address" required></textarea>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="description" class="required-field">Business Description</label>
+                            <textarea id="description" name="description" required></textarea>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="services" class="required-field">Services Offered</label>
+                            <textarea id="services" name="services" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="experience" class="required-field">Years of Experience</label>
+                            <input type="number" id="experience" name="experience" min="0" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Terms and Submit Section -->
+                <div class="form-section">
+                    <div class="form-group">
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="terms" name="terms" required>
+                            <label for="terms" class="required-field">I agree to the Terms and Conditions</label>
+                        </div>
+                    </div>
+
+                    <div class="submit-section">
+                        <button type="button" class="cancel-button" onclick="window.location.href='index2.html'">Cancel</button>
+                        <button type="submit" class="submit-button">Submit Registration</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="benefits-section">
+            <div class="header">
+                <h1>Why Choose Planora?</h1>
+                <p>Join the most trusted wedding vendor network and transform your business</p>
+            </div>
+
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h3>Premium Client Network</h3>
+                        <p>Connect with high-value clients actively planning their dream weddings. Our platform attracts couples who value quality and are ready to invest in their special day.</p>
+                    </div>
+                </div>
+
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h3>Business Growth</h3>
+                        <p>Experience up to 3x growth in bookings with our advanced matching algorithm and targeted marketing tools. Track your success with detailed analytics and insights.</p>
+                    </div>
+                </div>
+
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h3>Enhanced Visibility</h3>
+                        <p>Stand out with a premium profile, showcase your portfolio, and collect verified reviews. Get featured in our curated vendor listings and special promotions.</p>
+                    </div>
+                </div>
+
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h3>Smart Management</h3>
+                        <p>Streamline your business with our all-in-one platform. Manage bookings, payments, and client communications effortlessly with our intuitive tools.</p>
+                    </div>
+                </div>
+
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h3>Marketing Power</h3>
+                        <p>Access powerful marketing tools including social media integration, email campaigns, and targeted promotions. Reach your ideal clients with precision.</p>
+                    </div>
+                </div>
+
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h3>Vendor Network</h3>
+                        <p>Join an exclusive community of top-tier vendors. Create valuable partnerships, collaborate on events, and expand your business network.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-number">15K+</div>
+                    <div class="stat-label">Active Couples</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">8K+</div>
+                    <div class="stat-label">Premium Vendors</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">99%</div>
+                    <div class="stat-label">Success Rate</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="promo-section">
+            <div class="header">
+                <h1>Special Vendor Packages</h1>
+                <p>Choose the perfect package for your business</p>
+            </div>
+            <div class="promo-grid">
+                <div class="promo-card">
+                    <h3>Starter Package</h3>
+                    <div class="promo-price">$99/month</div>
+                    <ul class="promo-features">
+                        <li><i class="fas fa-check"></i> Basic Profile Listing</li>
+                        <li><i class="fas fa-check"></i> Up to 10 Service Listings</li>
+                        <li><i class="fas fa-check"></i> Basic Analytics</li>
+                        <li><i class="fas fa-check"></i> Email Support</li>
+                    </ul>
+                    <button class="btn btn-primary">Select Plan</button>
+                </div>
+                <div class="promo-card">
+                    <h3>Professional Package</h3>
+                    <div class="promo-price">$199/month</div>
+                    <ul class="promo-features">
+                        <li><i class="fas fa-check"></i> Featured Profile Listing</li>
+                        <li><i class="fas fa-check"></i> Unlimited Service Listings</li>
+                        <li><i class="fas fa-check"></i> Advanced Analytics</li>
+                        <li><i class="fas fa-check"></i> Priority Support</li>
+                        <li><i class="fas fa-check"></i> Custom Promotions</li>
+                    </ul>
+                    <button class="btn btn-primary">Select Plan</button>
+                </div>
+                <div class="promo-card">
+                    <h3>Premium Package</h3>
+                    <div class="promo-price">$299/month</div>
+                    <ul class="promo-features">
+                        <li><i class="fas fa-check"></i> VIP Profile Listing</li>
+                        <li><i class="fas fa-check"></i> Unlimited Everything</li>
+                        <li><i class="fas fa-check"></i> Premium Analytics</li>
+                        <li><i class="fas fa-check"></i> 24/7 Support</li>
+                        <li><i class="fas fa-check"></i> Custom Marketing Tools</li>
+                        <li><i class="fas fa-check"></i> Dedicated Account Manager</li>
+                    </ul>
+                    <button class="btn btn-primary">Select Plan</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="payment-section">
+            <h2>Secure Payment Options</h2>
+            <p>Choose your preferred payment method</p>
+            <div class="payment-methods">
+                <div class="payment-method">
+                    <i class="fab fa-cc-visa fa-2x"></i>
+                    <span>Visa</span>
+                </div>
+                <div class="payment-method">
+                    <i class="fab fa-cc-mastercard fa-2x"></i>
+                    <span>Mastercard</span>
+                </div>
+                <div class="payment-method">
+                    <i class="fab fa-cc-paypal fa-2x"></i>
+                    <span>PayPal</span>
+                </div>
+            </div>
+            <div class="secure-badge">
+                <i class="fas fa-lock"></i>
+                <span>Secure Payment Processing</span>
+            </div>
+        </div>
+
+        <div class="vendor-services">
+            <div class="vendor-services-container">
+                <div class="vendor-services-header">
+                    <h2>Our Premium Services</h2>
+    <script>
+        document.getElementById('vendorForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show success message
+            const successMessage = document.getElementById('successMessage');
+            successMessage.classList.add('active');
+            
+            // Reset form
+            this.reset();
+            
+            // Scroll to success message
+            successMessage.scrollIntoView({ behavior: 'smooth' });
+            
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                successMessage.classList.remove('active');
+            }, 5000);
+        });
+
+        // Form validation
+        const form = document.getElementById('vendorForm');
+        const inputs = form.querySelectorAll('input, select, textarea');
+
+        inputs.forEach(input => {
+            input.addEventListener('invalid', function(e) {
+                e.preventDefault();
+                this.classList.add('invalid');
+            });
+
+            input.addEventListener('input', function() {
+                if (this.classList.contains('invalid')) {
+                    this.classList.remove('invalid');
+                }
+            });
+        });
+
+        // Logo Upload Preview
+        const logoUpload = document.getElementById('logoUpload');
+        const logoInput = document.getElementById('logoInput');
+        const logoPreview = document.getElementById('logoPreview');
+        const logoPreviewImg = logoPreview.querySelector('img');
+
+        logoUpload.addEventListener('click', () => {
+            logoInput.click();
+        });
+
+        logoInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                if (file.size > 2 * 1024 * 1024) { // 2MB limit
+                    alert('File size should not exceed 2MB');
+                    return;
+                }
+
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    logoPreviewImg.src = e.target.result;
+                    logoPreview.style.display = 'block';
+                    logoUpload.querySelector('i').style.display = 'none';
+                    logoUpload.querySelector('p').style.display = 'none';
+                    logoUpload.querySelector('.file-types').style.display = 'none';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Drag and drop functionality
+        logoUpload.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            logoUpload.style.borderColor = '#FFD700';
+        });
+
+        logoUpload.addEventListener('dragleave', () => {
+            logoUpload.style.borderColor = '#ddd';
+        });
+
+        logoUpload.addEventListener('drop', (e) => {
+            e.preventDefault();
+            logoUpload.style.borderColor = '#ddd';
+            
+            const file = e.dataTransfer.files[0];
+            if (file && file.type.startsWith('image/')) {
+                logoInput.files = e.dataTransfer.files;
+                const event = new Event('change');
+                logoInput.dispatchEvent(event);
+            }
+        });
+
+        // Payment method selection
+        document.querySelectorAll('.payment-method').forEach(method => {
+            method.addEventListener('click', function() {
+                document.querySelectorAll('.payment-method').forEach(m => m.classList.remove('selected'));
+                this.classList.add('selected');
+            });
+        });
+
+        // Package selection
+        document.querySelectorAll('.promo-card .btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const packageName = this.closest('.promo-card').querySelector('h3').textContent;
+                alert(`You selected the ${packageName}. You will be redirected to the payment page.`);
+            });
+        });
+    </script>
+</body>
+</html> 

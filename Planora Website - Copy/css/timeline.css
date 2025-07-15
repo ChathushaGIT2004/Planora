@@ -1,0 +1,192 @@
+.how-it-works {
+    padding: 6rem 2rem;
+    background: var(--background);
+    position: relative;
+}
+
+.timeline-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.timeline-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.timeline-header h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.5rem;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+.timeline-header p {
+    color: var(--text-light);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.timeline {
+    position: relative;
+    padding: 2rem 0;
+    margin: 0 auto;
+    max-width: 1000px;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 50px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gradient-1);
+    z-index: 1;
+}
+
+.timeline-items {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-top: 100px;
+}
+
+.timeline-item {
+    flex: 1;
+    text-align: center;
+    position: relative;
+    padding: 0 15px;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    background: var(--white);
+    border: 3px solid var(--primary-color);
+    border-radius: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+.timeline-content {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: var(--shadow-soft);
+    transition: all 0.3s ease;
+}
+
+.timeline-content:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-strong);
+}
+
+.timeline-number {
+    width: 40px;
+    height: 40px;
+    background: var(--gradient-1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin: 0 auto 1.5rem;
+}
+
+.timeline-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--gradient-1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+}
+
+.timeline-icon i {
+    font-size: 1.8rem;
+    color: var(--white);
+}
+
+.timeline-content h3 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.4rem;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+.timeline-content p {
+    color: var(--text-light);
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+@media (max-width: 1024px) {
+    .timeline-items {
+        flex-wrap: wrap;
+        gap: 2rem;
+        justify-content: center;
+    }
+
+    .timeline::before {
+        display: none;
+    }
+
+    .timeline-item {
+        flex: 0 0 calc(50% - 2rem);
+    }
+
+    .timeline-item::before {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .how-it-works {
+        padding: 4rem 1rem;
+    }
+
+    .timeline-items {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .timeline-item {
+        flex: 0 0 100%;
+        max-width: 400px;
+    }
+
+    .timeline-header h2 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .timeline-content {
+        padding: 1.5rem;
+    }
+
+    .timeline-content h3 {
+        font-size: 1.3rem;
+    }
+
+    .timeline-icon {
+        width: 50px;
+        height: 50px;
+    }
+
+    .timeline-icon i {
+        font-size: 1.5rem;
+    }
+} 

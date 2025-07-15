@@ -1,0 +1,174 @@
+body {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                url('../images/registration-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.registration-form {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: var(--shadow-soft);
+    backdrop-filter: blur(10px);
+    transform: translateY(0);
+    transition: transform 0.3s ease;
+}
+
+.registration-form:hover {
+    transform: translateY(-5px);
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.form-header h1 {
+    font-family: 'Dancing Script', cursive;
+    color: var(--text-color);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.form-header p {
+    color: var(--text-light);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.login-link {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: var(--text-light);
+}
+
+.login-link a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+.benefits-sidebar {
+    padding: 2rem;
+    color: var(--white);
+}
+
+.benefits-sidebar h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--white);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.benefits-list {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.benefit-item {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: var(--shadow-soft);
+    transition: all 0.3s ease;
+}
+
+.benefit-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-strong);
+}
+
+.benefit-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--gradient-1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.benefit-icon i {
+    font-size: 1.5rem;
+    color: var(--white);
+}
+
+.benefit-content h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--white);
+}
+
+.benefit-content p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+    .registration-form {
+        padding: 2rem;
+        margin: 1rem;
+    }
+
+    .benefits-sidebar {
+        order: -1;
+        text-align: center;
+        padding: 1rem;
+    }
+
+    .benefits-sidebar h2 {
+        font-size: 1.6rem;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .benefit-item {
+        margin: 0 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .registration-form {
+        padding: 1.5rem;
+        margin: 0.5rem;
+    }
+
+    .form-header h1 {
+        font-size: 2rem;
+    }
+
+    .benefits-sidebar h2 {
+        font-size: 1.4rem;
+    }
+
+    .benefit-item {
+        padding: 1rem;
+    }
+
+    .form-group {
+        margin-bottom: 1rem;
+    }
+
+    .submit-button {
+        margin-top: 0.5rem;
+    }
+} 
